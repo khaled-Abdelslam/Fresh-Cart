@@ -9,7 +9,5 @@ export default defineConfig({
     react()],
   base:'/Fresh-Cart/',
 
-  build: {
-    chunkSizeWarningLimit: 1600,
-  },
+  
 })
