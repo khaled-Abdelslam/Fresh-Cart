@@ -22,6 +22,7 @@ import { Toaster } from './../node_modules/react-hot-toast/src/components/toaste
 import { ToastContainer } from 'react-toastify'
 import Order from './Components/Order/Order';
 import { Offline } from 'react-detect-offline'
+import AllOrders from './Components/AllOrders/AllOrders';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
       {path:'product_details/:id/:category' , element:<ProtectedRoute><ProductDetail/></ProtectedRoute>  },
       {path:'brands' , element:<ProtectedRoute><Brands/></ProtectedRoute>  },
       {path:'order' , element:<ProtectedRoute><Order/></ProtectedRoute>  },
+      {path:'allorders' , element:<ProtectedRoute><AllOrders/></ProtectedRoute>  },
       {path:'register' , element: <Register/>},
       {path:'login' , element: <Login/>},
       {path:'*' , element: <Notfound/>}
