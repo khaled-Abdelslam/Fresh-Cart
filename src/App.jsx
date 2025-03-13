@@ -26,7 +26,7 @@ import { Offline } from 'react-detect-offline'
 
 function App() {
 
-  const router = createHashRouter([
+  const router = createBrowserRouter([
 
     {path:'', element:<Layout/> , children:[
       {index: true , element:<ProtectedRoute><Home/></ProtectedRoute>  },
