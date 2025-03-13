@@ -85,7 +85,11 @@ export default function Register() {
  
   return (
 
-
+    
+    <div className=' contaner p-10'>
+    
+    <h2 className='text-main font-bold text-center  bg-gray-100 py-3 w-[75%] mx-auto'>Register</h2>
+    
     <form className="max-w-md mx-auto py-10" onSubmit={formik.handleSubmit}>
 
 {apiError && formik.touched.name ? <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
@@ -143,6 +147,8 @@ export default function Register() {
       </div>
 
     </form>
+    </div>
+
 
 
 

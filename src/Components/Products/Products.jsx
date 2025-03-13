@@ -4,10 +4,13 @@ import axios from 'axios';
 import ClipLoader from "react-spinners/ClipLoader";
 import { Link } from 'react-router-dom';
 import { WishListContext } from '../../Context/WishListContext';
+import { cartContext } from './../../Context/CartContext';
+import { toast } from 'react-toastify';
 
 export default function RecentProduct() {
 
     let { WishList, addToWishList, removeFromWishlist, inWishList } = useContext(WishListContext)
+    const {addProductToCart} = useContext(cartContext)
 
     
 
@@ -35,6 +38,18 @@ export default function RecentProduct() {
 
     }
 
+    async function handleAddProduct(id){
+
+       const res = await addProductToCart(id);
+
+       if (res) {
+        toast.success('Added to cart' , {position: 'top-right'})
+       
+        
+       }else{
+        toast.error('Failed', {position: 'top-right'})
+       }
+    }
 
     useEffect(() => {
 
@@ -79,7 +94,9 @@ export default function RecentProduct() {
                                         <span>{product.ratingsAverage}<i className='fa fa-star text-yellow-300'></i></span>
                                     </div>
 
-                                    <button className='btn'>Add to cart</button>
+                                    <button onClick={(e)=>{
+                                        e.preventDefault();
+                                        handleAddProduct(product.id)}} className='btn cursor-pointer'>Add to cart</button>
                                 </div>
                             </Link>
 

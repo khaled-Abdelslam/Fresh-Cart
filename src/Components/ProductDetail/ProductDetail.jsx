@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useEffect, useState } from 'react';
 import ClipLoader from "react-spinners/ClipLoader";
 import Slider from "react-slick";
+import { cartContext } from './../../Context/CartContext';
+import { toast } from 'react-toastify';
+
+
+
+
 
 export default function ProductDetail() {
 
+    const { addProductToCart } = useContext(cartContext)
 
     const [isLoading, setisLoading] = useState(false)
     const [productDetails, setproductDetails] = useState(null)
@@ -20,6 +27,26 @@ export default function ProductDetail() {
         slidesToShow: 1,
         slidesToScroll: 1,
     };
+
+    async function handleAddToCart() {
+
+        const res = await addProductToCart(id)
+
+        if (res) {
+         toast.success("Added to cart", {
+            duration: 3000, position: 'top-right'
+        })
+
+
+        } else {
+            toast.error("Failed", {
+                duration: 3000, position: 'top-right'
+            })
+
+        }
+
+
+    }
 
     function getProductDetails(id) {
 
@@ -103,7 +130,7 @@ export default function ProductDetail() {
                             <span>{productDetails?.ratingsAverage}<i className='fa fa-star text-yellow-300'></i></span>
                         </div>
 
-                        <button className='btn w-full rounded bg-main text-white cursor-pointer h-9'>Add to cart</button>
+                        <button onClick={handleAddToCart} className='btn w-full rounded bg-main text-white cursor-pointer h-9'>Add to cart</button>
                     </div>
 
 
@@ -115,6 +142,8 @@ export default function ProductDetail() {
             {/* ****************related ******************** */}
 
             <div className="container p-10">
+
+            <h2 className='text-main font-bold text-center bg-gray-100 py-3 mb-5 w-[75%] mx-auto'>Related products</h2>
 
                 <div className="grid xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-4">
 
@@ -131,7 +160,9 @@ export default function ProductDetail() {
                                     <span>{product.ratingsAverage}<i className='fa fa-star text-yellow-300'></i></span>
                                 </div>
 
-                                <button className='btn'>Add to cart</button>
+                                <button onClick={(e)=>{
+                                    e.preventDefault();
+                                    handleAddToCart()}} className='btn cursor-pointer'>Add to cart</button>
                             </div>
                         </Link>
 

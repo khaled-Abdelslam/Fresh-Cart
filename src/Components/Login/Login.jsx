@@ -82,6 +82,9 @@ export default function Login() {
 
 
   return (
+<div className='container p-10'>
+
+<h2 className='text-main font-bold text-center  bg-gray-100 py-3 w-[75%] mx-auto'>Login</h2>
 
 
     <form className="max-w-md mx-auto py-10" onSubmit={formik.handleSubmit}>
@@ -121,6 +124,9 @@ export default function Login() {
       </div>
 
     </form>
+
+</div>
+
 
 
 

@@ -13,6 +13,8 @@ export default function WishListProvider({ children }) {
         token: localStorage.getItem('userToken')
     }
 
+    console.log(headers.token);
+    
 
     const getWishList = async () => {
 
