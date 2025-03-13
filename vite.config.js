@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     react()],
-  base:'/Fresh-Cart/',
+ 
 
   
 })

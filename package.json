@@ -5,8 +5,7 @@
   "homepage": "https://khaled-Abdelslam.github.io/Fresh-Cart",
   "type": "module",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
