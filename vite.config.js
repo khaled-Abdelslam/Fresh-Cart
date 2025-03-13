@@ -7,5 +7,9 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     react()],
-  base:'/Fresh-Cart/'
+  base:'/Fresh-Cart/',
+
+  build: {
+    chunkSizeWarningLimit: 1600,
+  },
 })
